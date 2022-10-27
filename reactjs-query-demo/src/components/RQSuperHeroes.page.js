@@ -14,10 +14,12 @@ const RQSuperHeroesPage = () => {
     isError: rqHeroesErrorStatus,
     error: rqHeroesError,
   } = useQuery("get-rq-super-heroes", fetchRQSuperHeroes, {
-      cacheTime: 300000, // 5 Minutes
-      staleTime: 30000, // 30 Seconds
-      refetchOnMount: 'always',
-      refetchOnWindowFocus: 'always'
+    cacheTime: 300000,
+    staleTime: 30000,
+    refetchOnMount: "always",
+    refetchOnWindowFocus: "always",
+    refetchInterval: 5000,
+    refetchIntervalInBackground: true,
   });
 
   console.log({
