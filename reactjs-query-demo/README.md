@@ -12,3 +12,5 @@ npm run serve-json
 
 Now install react-router-dom
 npm i react-router-dom
+npm i react-query
+npm i axios
