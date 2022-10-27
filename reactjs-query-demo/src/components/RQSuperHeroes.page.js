@@ -3,15 +3,22 @@ import axios from "axios";
 import { useQuery } from "react-query";
 
 const RQSuperHeroesPage = () => {
-  const { isLoading: isRQHeroesDataLoading, data: rqHeroesData } = useQuery(
-    "get-rq-super-heroes",
-    () => {
-      return axios("http://localhost:4000/superheroes");
-    }
-  );
+
+  const {
+    isLoading: isRQHeroesDataLoading,
+    data: rqHeroesData,
+    isError: rqHeroesErrorStatus,
+    error: rqHeroesError,
+  } = useQuery("get-rq-super-heroes", () => {
+    return axios("http://localhost:4000/superheroes");
+  });
 
   if (isRQHeroesDataLoading) {
     return <>Loading...</>;
+  }
+
+  if (rqHeroesErrorStatus) {
+    return <>{rqHeroesError.message}</>;
   }
 
   return (
